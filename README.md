@@ -10,7 +10,7 @@ Instructions assume that you have an Arduino connected via USB serial that you c
 1. Download the latest [gauge.zip file release](https://github.com/Billiam/pygauge/releases/latest)
 2. Download the [TM1638 library](https://code.google.com/p/tm1638-library/) and place in your Arduino libraries directory.
 3. Download the [arduino sketch](arduino/tm1638-gauge.ino), update the pin values for strobe, clock and data pins, and upload your sketch.
-4. Update your DiRT Rally hardware_settings_config (located in `<user>\Documents\My Games\DiRT Rally\hardwaresettings`, setting motion_platform > udf `enabled` to true, and `extradata` to 3.
+4. Update your DiRT Rally (DiRT 4, DiRT Rally 2.0) hardware_settings_config (located in `<user>\Documents\My Games\DiRT Rally\hardwaresettings` (or another game folder), setting motion_platform > udp `enabled` to true, and `extradata` to 3.
 ```xml
 <motion_platform>
   ...
@@ -28,3 +28,6 @@ Assuming you're running in a git bash / cygwin / etc environment:
 2. Run `build.sh`
 
 This will build an exe and copy the config file in the `dist` directory, and create a zip containing these files.
+
+## Fork Notes
+Oh. I have just updated it to work with Python 3 and other Codemasters games like D4, Grid Autosport, Dirt Rally 2.0. Still no luck to get it working with D2, D3, havent tested it with F1 games.
