@@ -1,5 +1,5 @@
 # PyGauge
-PyGauge is a Python service (also available as a pre-built exe, see [releases](https://github.com/tridento/pygauge/releases/latest)) and accompanying Arduino sketch to display DiRT Rally telemetry data (currently gear, speed, and rev lights) on the TM1638 LED module.
+PyGauge is a Python service (also available as a pre-built exe, see [releases](https://github.com/tridento/pygauge/releases/latest)) and accompanying Arduino sketch to display DiRT Rally, DiRT Rally 2.0, DiRT 4 telemetry data (currently gear, speed, and rev lights) on the TM1638 LED module.
 
 ## Prerequisites
 Instructions assume that you have an Arduino connected via USB serial that you can upload sketches to, and that is hooked up to the TM1638 LED module.
@@ -15,8 +15,8 @@ Instructions assume that you have an Arduino connected via USB serial that you c
   <udp enabled="true" extradata="3" ip="127.0.0.1" port="20777" delay="1" />
 </motion_platform>
 ```
-5. Update the `config.yml` file in the gauge.zip, setting the port and ip address to match your DiRT Rally information above, and the COM port your arduino is connected to.
-6. Run `gauge.exe` and launch DiRT Rally. If everything's set up correctly, you should begin to see telemetry information when your stage begins.
+5. Update the `config.yml` file in the gauge.zip, setting the port and ip address to match information above, and the COM port your arduino is connected to.
+6. Run `gauge.exe` and launch the game. If everything's set up correctly, you should begin to see telemetry information when your stage begins.
 
 ## Building / Contributing
 
