@@ -16,13 +16,13 @@ class Sender:
                 parity=serial.PARITY_NONE, 
                 stopbits=serial.STOPBITS_ONE
             )
-        except serial.serialutil.SerialException, exc:
+        except serial.serialutil.SerialException as exc:
             sys.exit("Could not connect to serial port: %s" % serial_name)
 
-        print "Connected to serial port: %s" % serial_name
+        print("Connected to serial port: %s" % serial_name)
 
     def send(self, data):
-        self.ser.write(struct.pack('>cHHchcB', 'R', data['rpm'], data['max_rpm'], 'S', data['speed'], 'G', data['gear']))
+        self.ser.write(struct.pack('>chhchcb', b'R', data['rpm'], data['max_rpm'], b'S', data['speed'], b'G', data['gear']))
 
 class Receiver(asyncore.dispatcher):
     def __init__(self, address, sender, speed_units):
@@ -37,13 +37,13 @@ class Receiver(asyncore.dispatcher):
 
         self.create_socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.bind(self.address)
-        print "Waiting for data on %s:%s" % self.address
+        print("Waiting for data on %s:%s" % self.address)
 
     def writable(self):
         return False
 
     def handle_expt(self):
-        print 'exception occurred!'
+        print('exception occurred!')
         self.close()
 
     def readable(self):
@@ -57,7 +57,7 @@ class Receiver(asyncore.dispatcher):
         
         if not self.received_data:
             self.received_data = True
-            print "Receiving data on %s:%s" % self.address
+            print("Receiving data on %s:%s" % self.address)
 
         self.parse(data)
         
@@ -85,13 +85,13 @@ if __name__ == '__main__':
         approot = os.path.dirname(os.path.realpath(__file__))
 
     try:
-        config = yaml.load(file(approot + '/config.yml', 'r'))
-    except yaml.YAMLError, exc:
-        print "Error in configuration file:", exc
+        config = yaml.load(open(approot + '/config.yml', 'r'))
+    except yaml.YAMLError as exc:
+        print("Error in configuration file:", exc)
 
     arduino = Sender(config['arduino_port'])
     server = (config['telemetry_server']['host'], config['telemetry_server']['port'])
     speed_units = config['speed_units']
 
     game = Receiver(server, arduino, speed_units)
-    asyncore.loop()
+asyncore.loop()
