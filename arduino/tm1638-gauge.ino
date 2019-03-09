@@ -120,7 +120,7 @@ void loop() {
         module.setDisplayDigit(gear, 7, false);
       } else if (gear == 0){
         module.setDisplayToString(neutral, 0, 7);
-     } else if (gear == 10){
+     } else if ((gear == 10) || (gear == -1)){
         module.setDisplayToString(reverse, 0, 7);
       }
 
