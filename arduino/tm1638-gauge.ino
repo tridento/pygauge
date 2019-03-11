@@ -56,7 +56,7 @@ void loop() {
   float rpm_percent = 0;
 
   signed int carspeed;               //holds the speed data (0-65535 size)
-  byte gear;                         // holds gear value data
+  signed short int gear;             // holds gear value data
   byte d1;                           // high byte temp variable
   byte d2;                           // low byte temp variable
 
